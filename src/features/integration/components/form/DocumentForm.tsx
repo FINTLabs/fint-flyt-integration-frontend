@@ -47,7 +47,7 @@ const DocumentForm: React.FunctionComponent<any> = (props) => {
                     </Box>
                 )}
             )}
-            <Typography>Dokumentbeskrivelse</Typography>
+            <Typography>Objektbeskrivelse</Typography>
             <Divider sx={{mb: 3}}/>
             {objectFormFields.map((field, index) => {
                 return (
