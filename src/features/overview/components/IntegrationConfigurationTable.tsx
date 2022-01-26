@@ -9,8 +9,8 @@ const IntegrationConfigurationTable: React.FunctionComponent<any> = (props) => {
 
     const columns: GridColDef[] = [
         { field: 'id', hide: true},
-        { field: 'name', headerName: 'Navn', width: 250 },
-        { field: 'description', headerName: 'Beskrivelse', width: 650 },
+        { field: 'name', headerName: 'Skjema ID', width: 250 },
+        { field: 'description', headerName: 'Skjematittel', width: 650 },
         { field: 'version', headerName: 'Versjon', width: 150 }
     ];
 

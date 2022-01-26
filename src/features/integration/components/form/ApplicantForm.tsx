@@ -1,11 +1,12 @@
-import {FormGroup} from '@mui/material';
+import {Box, FormGroup} from '@mui/material';
 import React from 'react';
-import {applicantOptions, dropdownPlaceholder} from "../../util/DefaultValues";
+import {applicantOptions, dropdownPlaceholder, HelpTextPopover} from "../../util/DefaultValues";
 import InputField from "./InputField";
 import {INPUT_TYPE} from "../../types/InputType.enum";
 import {IInputField} from "../../types/InputField";
 import {ApplicantType} from "../../types/ApplicantType";
 import {FieldErrors} from "react-hook-form";
+import HelpPopover from "../popover/HelpPopover";
 
 const ApplicantForm: React.FunctionComponent<any> = (props) => {
     let isOrganisation = props.watch("applicantData.type") === ApplicantType.ORGANISATION
@@ -31,18 +32,24 @@ const ApplicantForm: React.FunctionComponent<any> = (props) => {
                     return (
                         field.hidden ?
                             <div key={index}/> :
-                            <InputField key={index}
-                                        required={field.required}
-                                        error={field.error}
-                                        input={field.input}
-                                        label={field.label}
-                                        value={field.value}
-                                        formValue={field.formValue}
-                                        dropdownItems={field.dropDownItems}
-                                        radioOptions={field.radioOptions}
-                                        defaultValue={field.defaultValue}
-                                        {...props}
-                            />
+                            <Box sx={{display: 'flex'}} key={index}>
+                                <Box width={'100%'}>
+                                    <InputField required={field.required}
+                                                error={field.error}
+                                                input={field.input}
+                                                label={field.label}
+                                                value={field.value}
+                                                formValue={field.formValue}
+                                                dropdownItems={field.dropDownItems}
+                                                radioOptions={field.radioOptions}
+                                                defaultValue={field.defaultValue}
+                                                {...props}
+                                    />
+                                </Box>
+                                <Box>
+                                    <HelpPopover popoverContent={HelpTextPopover}/>
+                                </Box>
+                            </Box>
                     )}
                 )}
             </FormGroup>

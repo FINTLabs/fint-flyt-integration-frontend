@@ -16,7 +16,7 @@ const routes: IRoute[] = [
     },
     {
         path: '/integration/configuration/new',
-        name: 'Ny integrasjon',
+        name: 'Ny avlevering',
         component: IntegrationConfigurationForm,
         exact: true,
         icon: 'add',
@@ -24,13 +24,13 @@ const routes: IRoute[] = [
     },
     {
         path: '/integration/configuration/edit',
-        name: 'Rediger integrasjon',
+        name: 'Rediger avlevering',
         component: IntegrationConfigurationForm,
         exact: true
     },
     {
         path: '/overview',
-        name: 'Integrasjonsoversikt',
+        name: 'Skjemaoversikt',
         component: Overview,
         exact: true,
         icon: 'sync',
@@ -38,7 +38,7 @@ const routes: IRoute[] = [
     },
     {
         path: '/log',
-        name: 'Logg',
+        name: 'Avleveringslogg',
         component: Log,
         icon: 'receipt',
         exact: true,

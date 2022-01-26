@@ -1,10 +1,11 @@
-import {FormGroup} from '@mui/material';
+import {Box, FormGroup} from '@mui/material';
 import React from 'react';
-import {dropdownPlaceholder} from "../../util/DefaultValues";
+import {dropdownPlaceholder, HelpTextPopover} from "../../util/DefaultValues";
 import {IInputField} from "../../types/InputField";
 import {INPUT_TYPE} from "../../types/InputType.enum";
 import InputField from "./InputField";
 import {FieldErrors} from "react-hook-form";
+import HelpPopover from "../popover/HelpPopover";
 
 const RecordForm: React.FunctionComponent<any> = (props) => {
     let errors: FieldErrors = props.errors;
@@ -22,16 +23,22 @@ const RecordForm: React.FunctionComponent<any> = (props) => {
         <FormGroup className={props.style.formControl}>
             {recordFormFields.map((field, index) => {
                 return (
-                    <InputField key={index}
-                                required={field.required}
-                                error={field.error}
-                                input={field.input}
-                                label={field.label}
-                                value={field.value}
-                                formValue={field.formValue}
-                                dropdownItems={field.dropDownItems}
-                                {...props}
-                    />
+                <Box sx={{display: 'flex'}} key={index}>
+                    <Box width={'100%'}>
+                        <InputField required={field.required}
+                                    error={field.error}
+                                    input={field.input}
+                                    label={field.label}
+                                    value={field.value}
+                                    formValue={field.formValue}
+                                    dropdownItems={field.dropDownItems}
+                                    {...props}
+                        />
+                    </Box>
+                    <Box>
+                        <HelpPopover popoverContent={HelpTextPopover}/>
+                    </Box>
+                </Box>
                 )}
             )}
         </FormGroup>

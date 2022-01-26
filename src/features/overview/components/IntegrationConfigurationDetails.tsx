@@ -93,14 +93,14 @@ const IntegrationConfigurationDetails: React.FunctionComponent<any> = (props) =>
                     </FormControl>
                     <CardContent>
                         <Typography><strong>Id: </strong>{activeConfiguration.id}</Typography>
-                        <Typography><strong>Navn: </strong>{activeConfiguration.name}</Typography>
-                        <Typography><strong>Beskrivelse: </strong>{activeConfiguration.description}</Typography>
+                        <Typography><strong>Skjema ID: </strong>{activeConfiguration.name}</Typography>
+                        <Typography><strong>Skjematittel: </strong>{activeConfiguration.description}</Typography>
                         <Typography><strong>Integrasjonslogikk: </strong>{activeConfiguration.caseConfiguration.caseCreationStrategy}</Typography>
                         <Typography><strong>Versjon: </strong>{activeConfiguration.version}</Typography>
                     </CardContent>
                     <Divider />
                     <CardContent>
-                        <Typography variant={"h6"}>Sakspost</Typography>
+                        <Typography variant={"h6"}>Sak</Typography>
                         <Typography><strong>Saksnummer: </strong>{activeConfiguration.caseConfiguration.caseNumber}</Typography>
                         {activeConfiguration.caseConfiguration.fields.map((field: any, index: number) => {
                             return<Typography key={index}><strong>{field.field}:</strong> {toValueString(field.valueBuilder)}</Typography>
