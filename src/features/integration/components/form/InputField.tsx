@@ -3,7 +3,7 @@ import {
     FormControl, FormControlLabel,
     FormLabel,
     MenuItem, Radio,
-    RadioGroup,
+    RadioGroup, Switch,
     TextField, Typography
 } from '@mui/material';
 import React from 'react';
@@ -99,6 +99,12 @@ const InputField: React.FunctionComponent<any> = (props) => {
                 formValue={props.formValue}
                 required={props.required}
             />
+        )
+    }
+    else if (props.input === INPUT_TYPE.SWITCH) {
+        return (
+            <FormControlLabel control={<Switch defaultChecked />} label={props.label} />
+
         )
     }
     else {

@@ -1,4 +1,4 @@
-import {Box, FormGroup} from '@mui/material';
+import {Box, Divider, FormGroup, Typography} from '@mui/material';
 import React from 'react';
 import {caseWorkers, dropdownPlaceholder, fieldHelp, HelpTextPopover} from "../../util/DefaultValues";
 import {IInputField} from "../../types/InputField";
@@ -13,17 +13,30 @@ const CaseForm: React.FunctionComponent<any> = (props) => {
     const caseFormFields: IInputField[] = [
         {input: INPUT_TYPE.DROPZONE_TEXT_FIELD, label: "Tittel", formValue: "caseData.title", required: required, error:errors.caseData?.title, value: props.activeFormData?.caseData?.title, helpText: fieldHelp.caseData.title},
         {input: INPUT_TYPE.DROPZONE_TEXT_FIELD, label: "Offentlig tittel", formValue: "caseData.publicTitle", required: required, error:errors.caseData?.publicTitle, value: props.activeFormData?.caseData?.publicTitle, helpText: fieldHelp.caseData.publicTitle},
-        {input: INPUT_TYPE.DROPDOWN, label: "Sakstype", value: props.watch("caseData.caseType"), formValue: "caseData.caseType", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.caseType, helpText: fieldHelp.caseData.caseType},
+        {input: INPUT_TYPE.DROPDOWN, label: "Status ##", formValue: '', dropDownItems: dropdownPlaceholder},
         {input: INPUT_TYPE.DROPDOWN, label: "Administrativ enhet", value: props.watch("caseData.administrativeUnit"), formValue: "caseData.administrativeUnit", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.administrativeUnit, helpText: fieldHelp.caseData.administrativeUnit},
+        {input: INPUT_TYPE.DROPDOWN, label: "Saksansvarlig", value: props.watch("caseData.caseWorker"), formValue: "caseData.caseWorker", dropDownItems: caseWorkers, required: required, error:errors.caseData?.caseWorker, helpText: fieldHelp.caseData.caseWorker},
         {input: INPUT_TYPE.DROPDOWN, label: "Arkivdel", value: props.watch("caseData.archiveUnit"), formValue: "caseData.archiveUnit", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.archiveUnit, helpText: fieldHelp.caseData.archiveUnit},
-        {input: INPUT_TYPE.DROPDOWN, label: "Journalenhet", value: props.watch("caseData.recordUnit"), formValue: "caseData.recordUnit", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.recordUnit, helpText: fieldHelp.caseData.recordUnit},
+        {input: INPUT_TYPE.DROPDOWN, label: "Mappetype ##", formValue: '', dropDownItems: dropdownPlaceholder},
+        {input: INPUT_TYPE.DROPDOWN, label: "Sakstype", value: props.watch("caseData.caseType"), formValue: "caseData.caseType", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.caseType, helpText: fieldHelp.caseData.caseType},
         {input: INPUT_TYPE.DROPDOWN, label: "Tilgangskode", value: props.watch("caseData.accessCode"), formValue: "caseData.accessCode", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.accessCode, helpText: fieldHelp.caseData.accessCode},
         {input: INPUT_TYPE.DROPDOWN, label: "Hjemmel", value: props.watch("caseData.paragraph"), formValue: "caseData.paragraph", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.paragraph, helpText: fieldHelp.caseData.paragraph},
-        {input: INPUT_TYPE.DROPDOWN, label: "Saksansvarlig", value: props.watch("caseData.caseWorker"), formValue: "caseData.caseWorker", dropDownItems: caseWorkers, required: required, error:errors.caseData?.caseWorker, helpText: fieldHelp.caseData.caseWorker},
+        {input: INPUT_TYPE.DROPDOWN, label: "Journalenhet", value: props.watch("caseData.recordUnit"), formValue: "caseData.recordUnit", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.recordUnit, helpText: fieldHelp.caseData.recordUnit},
+        {input: INPUT_TYPE.DROPDOWN, label: "Kassasjonskode ##", formValue: '', dropDownItems: dropdownPlaceholder},
+        {input: INPUT_TYPE.DROPDOWN, label: "Bevaringstid ##", formValue: '', dropDownItems: dropdownPlaceholder},
+    ]
+
+    const classificationFields: IInputField[] = [
+        {input: INPUT_TYPE.DROPDOWN, label: "Sortering ##", formValue: '', dropDownItems: dropdownPlaceholder},
+        {input: INPUT_TYPE.DROPDOWN, label: "Unntatt offentlighet ##", formValue: '', dropDownItems: dropdownPlaceholder},
         {input: INPUT_TYPE.DROPZONE_TEXT_FIELD, label: "Primær ordningsprinsipp", formValue: "caseData.primaryClassification", required: required, error:errors.caseData?.primaryClassification, value: props.activeFormData?.caseData?.primaryClassification, helpText: fieldHelp.caseData.classification},
+        {input: INPUT_TYPE.DROPDOWN, label: "Primærklasse (verdi og beskrivelse)", value: props.watch("caseData.primaryClass"), formValue: "caseData.primaryClass", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.primaryClass, helpText: fieldHelp.caseData.class},
+
+        {input: INPUT_TYPE.DROPDOWN, label: "Sortering ##", formValue: '', dropDownItems: dropdownPlaceholder},
+        {input: INPUT_TYPE.DROPDOWN, label: "Unntatt offentlighet ##", formValue: '', dropDownItems: dropdownPlaceholder},
         {input: INPUT_TYPE.DROPZONE_TEXT_FIELD, label: "Sekundær ordningsprinsipp", formValue: "caseData.secondaryClassification", required: required, error:errors.caseData?.secondaryClassification, value: props.activeFormData?.caseData?.secondaryClassification, helpText: fieldHelp.caseData.classification},
-        {input: INPUT_TYPE.DROPDOWN, label: "Primærklasse", value: props.watch("caseData.primaryClass"), formValue: "caseData.primaryClass", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.primaryClass, helpText: fieldHelp.caseData.class},
-        {input: INPUT_TYPE.DROPDOWN, label: "Sekundærklasse", value: props.watch("caseData.secondaryClass"), formValue: "caseData.secondaryClass", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.secondaryClass, helpText: fieldHelp.caseData.class}
+        {input: INPUT_TYPE.DROPDOWN, label: "Sekundærklasse (verdi og beskrivelse)", value: props.watch("caseData.secondaryClass"), formValue: "caseData.secondaryClass", dropDownItems: dropdownPlaceholder, required: required, error:errors.caseData?.secondaryClass, helpText: fieldHelp.caseData.class}
+
     ]
 
     return (
@@ -44,6 +57,28 @@ const CaseForm: React.FunctionComponent<any> = (props) => {
                         </Box>
                         <Box>
                             <HelpPopover popoverContent={field.helpText}/>
+                        </Box>
+                    </Box>
+                )}
+            )}
+            <Typography>Klassering</Typography>
+            <Divider sx={{mb: 3}}/>
+            {classificationFields.map((field, index) => {
+                return (
+                    <Box sx={{display: 'flex'}} key={index}>
+                        <Box width={'100%'}>
+                            <InputField required={field.required}
+                                        error={field.error}
+                                        input={field.input}
+                                        label={field.label}
+                                        value={field.value}
+                                        formValue={field.formValue}
+                                        dropdownItems={field.dropDownItems}
+                                        {...props}
+                            />
+                        </Box>
+                        <Box>
+                            <HelpPopover popoverContent={HelpTextPopover}/>
                         </Box>
                     </Box>
                 )}
