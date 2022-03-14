@@ -1,6 +1,8 @@
 import {ValueBuilder} from "../integration/types/ValueBuilder";
 import {IProperty} from "../integration/types/Property";
 import {IField} from "../integration/types/Field";
+import {ISelect} from "../integration/types/InputField";
+
 
 /* TODO: Remove empty check after validation ensures no empty fields */
 export function createValueBuilder(inputString: any): ValueBuilder {
@@ -41,4 +43,12 @@ export function fieldToString(configuration: any, configurationField: string, va
         return fields.length > 0 ? toValueString(fields[0].valueBuilder) : '';
     }
     return fields.length > 0 ? fields[0].valueBuilder.value : '';
+}
+
+export function toListValue(inputValue: string | undefined, valueList?: ISelect[]): string {
+    const retVal = valueList && inputValue? valueList.find( ({value} : {value:any}) => value === inputValue): null;
+    if(retVal)
+        return retVal.label;
+    else
+        return '';
 }
