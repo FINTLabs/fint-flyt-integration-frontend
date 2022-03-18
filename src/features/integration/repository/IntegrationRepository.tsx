@@ -34,6 +34,10 @@ const getSak = (caseYear: any, caseNumber: any) => {
     return axios.get<any>(`/sak/mappeid/${caseYear}/${caseNumber}/tittel`, {timeout: 5000})
 }
 
+const getAuthToken = () => {
+    return axios.get<any>("/integration/configuration/auth")
+}
+
 const IntegrationRepository = {
     getByIdAndVersion,
     get,
@@ -42,7 +46,8 @@ const IntegrationRepository = {
     create,
     update,
     remove,
-    getSak
+    getSak,
+    getAuthToken
 };
 
 export default IntegrationRepository;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import {
     AppBar, Badge,
     Box,
@@ -15,6 +15,7 @@ import MenuItems from "./MenuItems";
 import {Link as RouterLink} from "react-router-dom";
 import IntegrationProvider from "../../context/integrationContext";
 import ResourcesProvider from "../../context/resourcesContext";
+import {AuthorizationContext} from "../../context/authorizationContext";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 function Main() {
     const classes = useStyles();
+    const { token } = useContext(AuthorizationContext)
 
     return (
         <IntegrationProvider>
@@ -72,6 +74,7 @@ function Main() {
                             <Typography variant="h6" color="inherit" noWrap className={classes.flex}>
                                 Skjema til arkivintegrasjon
                             </Typography>
+                            {token}
                             <Badge className={classes.badge}
                                    badgeContent={"5"}
                                    color="secondary"

@@ -1,6 +1,7 @@
-import React, { createContext, useState, FC } from "react";
+import React, {createContext, useState, FC, useContext} from "react";
 import {contextDefaultValues, IResourceItem, ResourceContextState} from "./types";
 import ResourceRepository from "../../features/integration/repository/ResourceRepository";
+import {AuthorizationContext} from "../authorizationContext";
 
 export const ResourcesContext = createContext<ResourceContextState>(
     contextDefaultValues
@@ -27,6 +28,8 @@ const ResourcesProvider: FC = ({ children }) => {
     const [primaryClass, setPrimaryClass] = useState<IResourceItem[]>(contextDefaultValues.primaryClass);
     const [secondaryClass, setSecondaryClass] = useState<IResourceItem[]>(contextDefaultValues.secondaryClass);
     const [tertiaryClass, setTertiaryClass] = useState<IResourceItem[]>(contextDefaultValues.tertiaryClass);
+
+    const { token } = useContext(AuthorizationContext)
 
     const getAdministrativeUnits = () => {
         let list: IResourceItem[] = [];
