@@ -13,6 +13,8 @@ import {createStyles, makeStyles} from "@mui/styles";
 import Router from "./Router";
 import MenuItems from "./MenuItems";
 import {Link as RouterLink} from "react-router-dom";
+import IntegrationProvider from "../../context/integrationContext";
+import ResourcesProvider from "../../context/resourcesContext";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme: Theme) =>
@@ -61,29 +63,33 @@ function Main() {
     const classes = useStyles();
 
     return (
-        <Box display="flex" position="relative" width={1} height={1}>
-            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-                <Toolbar className={classes.toolbar} id={"toolbar"}>
-                    <img src={FintLogo} alt="logo" className={classes.logo}/>
-                    <Typography variant="h6" color="inherit" noWrap className={classes.flex}>
-                        Skjema til arkivintegrasjon
-                    </Typography>
-                    <Badge className={classes.badge}
-                           badgeContent={"5"}
-                           color="secondary"
-                           component={RouterLink} to="/log">
-                        <NotificationsIcon htmlColor={"white"}/>
-                    </Badge>
-                </Toolbar>
-            </AppBar>
-            <Drawer variant="permanent" className={classes.drawer}>
-                <Toolbar />
-                <MenuItems/>
-            </Drawer>
-            <main className={classes.content}>
-                <Router/>
-            </main>
-        </Box>
+        <IntegrationProvider>
+            <ResourcesProvider>
+                <Box display="flex" position="relative" width={1} height={1}>
+                    <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+                        <Toolbar className={classes.toolbar} id={"toolbar"}>
+                            <img src={FintLogo} alt="logo" className={classes.logo}/>
+                            <Typography variant="h6" color="inherit" noWrap className={classes.flex}>
+                                Skjema til arkivintegrasjon
+                            </Typography>
+                            <Badge className={classes.badge}
+                                   badgeContent={"5"}
+                                   color="secondary"
+                                   component={RouterLink} to="/log">
+                                <NotificationsIcon htmlColor={"white"}/>
+                            </Badge>
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer variant="permanent" className={classes.drawer}>
+                        <Toolbar />
+                        <MenuItems/>
+                    </Drawer>
+                    <main className={classes.content}>
+                        <Router/>
+                    </main>
+                </Box>
+            </ResourcesProvider>
+        </IntegrationProvider>
     );
 }
 

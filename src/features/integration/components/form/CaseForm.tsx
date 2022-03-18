@@ -1,11 +1,11 @@
 import {Box, Button, Divider, FormGroup, Typography} from '@mui/material';
 import React, {useContext, useEffect} from 'react';
-import {dropdownPlaceholder, fieldHelp} from "../../defaults/DefaultValues";
+import {fieldHelp} from "../../defaults/DefaultValues";
 import {IInputField} from "../../types/InputField";
 import {INPUT_TYPE} from "../../types/InputType.enum";
 import InputField from "./InputField";
 import {FieldErrors} from "react-hook-form";
-import {ResourcesContext} from "../../../../resourcesContext";
+import {ResourcesContext} from "../../../../context/resourcesContext";
 import HelpPopover from "../popover/HelpPopover";
 
 const CaseForm: React.FunctionComponent<any> = (props) => {

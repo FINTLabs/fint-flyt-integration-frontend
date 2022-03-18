@@ -1,3 +1,6 @@
+import React from "react";
+
+
 describe('Testing Routes', () => {
         it('should open dashboard', () => {
             cy.visit('/');
@@ -14,5 +17,10 @@ describe('Testing Routes', () => {
         it('should open support', () => {
             cy.visit('/support');
         });
-    }
+        it('renders learn react link', () => {
+            cy.visit('/')
+            cy.get('#IntegrasjonsoversiktButton').click()
+        });
+}
+
 )
