@@ -35,6 +35,20 @@ export function toValueString(inputValue: ValueBuilder): string {
     return valueString;
 }
 
+export function toValueString2(field: IField): string {
+    console.log(field)
+
+    let valueString = field.valueBuilder.value? field.valueBuilder.value : '';
+    if (valueString !== '' && field.valueBuilder.properties !== undefined) {
+        let helperString;
+        field.valueBuilder.properties?.map((property => {
+            helperString = valueString?.replace("%s", '{' + property.key + '}')
+            valueString = helperString;
+        }))
+    }
+    return valueString;
+}
+
 export function fieldToString(configuration: any, configurationField: string, valueString?: boolean): string {
     const fields = configuration.fields.filter((field: IField) => field.field === configurationField)
     if (valueString) {

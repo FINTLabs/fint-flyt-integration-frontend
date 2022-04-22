@@ -3,7 +3,7 @@ import * as React from "react";
 import {useContext, useEffect, useState} from "react";
 import IntegrationRepository from "../../integration/repository/IntegrationRepository";
 import {useHistory} from "react-router-dom";
-import {toValueString} from "../../util/ValueBuilderUtil";
+import {toValueString, toValueString2} from "../../util/ValueBuilderUtil";
 import {IIntegrationConfiguration} from "../../integration/types/IntegrationConfiguration";
 import {ResourcesContext} from "../../../resourcesContext";
 import {IntegrationContext} from "../../../integrationContext";
@@ -43,7 +43,7 @@ const IntegrationConfigurationDetails: React.FunctionComponent<any> = (props) =>
     const updateConfiguration = (integrationId: string, data: IIntegrationConfiguration) => {
         IntegrationRepository.update(integrationId, data)
             .then(response => {
-                console.log('updated configuraton: ', integrationId,  data, response);
+                console.log('updated configuration: ', integrationId,  data, response);
                 setUpdateSuccess(response.status === 200);
             })
             .catch((e: Error) => {
@@ -106,7 +106,7 @@ const IntegrationConfigurationDetails: React.FunctionComponent<any> = (props) =>
                         <Typography variant={"h6"}>Sakspost</Typography>
                         <Typography><strong>Saksnummer: </strong>{activeConfiguration.caseConfiguration?.caseNumber}</Typography>
                         {activeConfiguration.caseConfiguration?.fields.map((field: any, index: number) => {
-                            return<Typography key={index}><strong>{field.field}:</strong> {toValueString(field.valueBuilder)}</Typography>
+                            return<Typography key={index}><strong>{field.field}:</strong> {toValueString2(field)}</Typography>
                         })}
                     </CardContent>
                     <Divider />
