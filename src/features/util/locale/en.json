@@ -32,6 +32,7 @@
             "accordions": {
                 "caseInformation": {
                     "header": "Integration logic",
+                    "classification": "Classification",
                     "button": {
                         "search": "Search",
                         "save": "Save"
@@ -118,6 +119,7 @@
                 "published": "Published: ",
                 "version": "Version: ",
                 "caseNumber": "Case number: ",
+                "existingCase": "Existing case: ",
                 "title": "Title: ",
                 "publicTitle": "Public title: ",
                 "administrativeUnit": "Administrative unit: ",
@@ -183,6 +185,7 @@
             "destination": "Destination",
             "sourceApplication": "Source application",
             "sourceApplicationIntegrationId": "Form",
+            "searchAlternatives": "Search combination for searching existing case",
             "caseCreationInfo": "Select creation strategy",
             "caseCreationNew": "As new case",
             "caseCreationNewInfo": "Form creates new case in Elements",
@@ -191,6 +194,7 @@
             "caseCreationCollection": "On case collection",
             "caseCreationCollectionInfo": "Form is part of predefined case collection, here you must provide a case number",
             "caseNumber": "Case number",
+            "existingCase": "Existing case number: ",
             "title": "Title",
             "publicTitle": "Public title",
             "administrativeUnit": "Administrative unit",
@@ -235,6 +239,13 @@
                 "exisitingDesc":"Form submitted finds existing form in Elements based on data in the form. If no matching case - a new case is created",
                 "collection":"On a case collection",
                 "collectionDesc":"Form submitted will be added to predefined case collection. This option requires a valid case number"
+            },
+            "searchStrategies": {
+                "class": "Klassering/ordningsverdi",
+                "classArch": "Klassering/ordningsverdi og arkivdel",
+                "classType": "Klassering/ordningsverdi og sakstype",
+                "classArchType": "Klassering/ordningsverdi, arkivdel og sakstyoe",
+                "classAccArchType": "Klassering/ordningsverdi, tilgangskode, arkivdel og sakstyoe"
             },
             "applicantOptions": {
                 "individual":"Individual",
@@ -329,6 +340,8 @@
                 "destination": "Destination"
             },
             "button": {
+                "save": "Save",
+                "search": "Search",
                 "next": "Next",
                 "cancel": "Cancel"
             }
