@@ -89,7 +89,7 @@ const IntegrationConfigurationForm: React.FunctionComponent<RouteComponentProps<
     const editConfig: boolean = window.location.pathname === '/integration/configuration/edit'
     const [submitSuccess, setSubmitSuccess] = useState(false)
     const [settings, setSettings] = useState(false)
-    const {integration, sourceApplication, destination, setIntegration, resetSourceAndDestination} = useContext(IntegrationContext)
+    const {integration, sourceApplication, destination, setIntegration, resetSourceAndDestination, _case, resetCase} = useContext(IntegrationContext)
     const [activeId, setActiveId] = useState<any>(undefined)
     const [saved, setSaved] = React.useState(false);
     const [saveError, setSaveError] = React.useState(false);
@@ -114,6 +114,7 @@ const IntegrationConfigurationForm: React.FunctionComponent<RouteComponentProps<
         return () => {
             resetAllResources();
             resetSourceAndDestination();
+            resetCase();
         };
     }, [])
 

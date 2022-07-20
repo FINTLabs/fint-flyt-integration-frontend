@@ -8,12 +8,17 @@ export const IntegrationContext = createContext<IntegrationContextState>(
 
 const IntegrationProvider: FC = ({ children }) => {
     const [integration, setIntegration] = useState<IIntegrationConfiguration>({});
+    const [_case, setCase] = useState<string | undefined>(undefined);
     const [destination, setDestination] = useState<string>('');
     const [sourceApplication, setSourceApplication] = useState<string>('');
 
     const resetSourceAndDestination = () => {
         setDestination('');
         setSourceApplication('');
+    }
+
+    const resetCase = () => {
+        setCase(undefined);
     }
 
     return (
@@ -25,6 +30,9 @@ const IntegrationProvider: FC = ({ children }) => {
                 setDestination,
                 sourceApplication,
                 setSourceApplication,
+                _case,
+                setCase,
+                resetCase,
                 resetSourceAndDestination
             }}
         >

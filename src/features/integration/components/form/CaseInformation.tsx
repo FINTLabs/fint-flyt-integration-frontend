@@ -15,16 +15,20 @@ import { useTranslation } from 'react-i18next';
 const CaseInformation: React.FunctionComponent<any> = (props) => {
     const { t } = useTranslation('translations', { keyPrefix: 'pages.integrationForm.accordions.caseInformation'});
     const { destination, sourceApplication } = useContext(IntegrationContext)
-    const [_case, setCase] = React.useState('');
+    const [searchCase, setSearchCase] = React.useState('');
+    const {_case, setCase} = useContext(IntegrationContext)
     let caseInput = props.watch("caseData.caseNumber");
-    let caseInputPattern = /^((19|20)*\d{2})\/([0-9]{1,6})/g;
+    let caseInputPattern = /^(((19|20)*\d{2})\/([0-9]{1,6}))/g;
 
     const handleCaseSearch = () => {
         if(caseInputPattern.test(caseInput)) {
-            setCase(t('caseSearch.searching'))
+            console.log(caseInput)
             let caseId = caseInput.split('/')
+            setSearchCase(t('caseSearch.searching') + caseId[0]+'/'+caseId[1])
+            console.log(caseId)
             IntegrationRepository.getSak(caseId[0], caseId[1])
                 .then((response) => {
+                    setSearchCase(response.data.value)
                     setCase(response.data.value)
                 })
                 .catch(e => {
@@ -32,7 +36,7 @@ const CaseInformation: React.FunctionComponent<any> = (props) => {
                         setCase(t('caseSearch.noMatch'));
                     }
                 )
-        } else setCase(t('caseSearch.info'))
+        } else setSearchCase(t('caseSearch.info'))
     }
 
     let isCollection = props.watch("caseData.caseCreationStrategy") === CreationStrategy.COLLECTION
@@ -80,7 +84,7 @@ const CaseInformation: React.FunctionComponent<any> = (props) => {
                         );
                     }
                 )}
-                {isCollection && _case ? <Typography id="case-information-case-search-result" sx={{mb:2}}>{_case}</Typography> : ''}
+                {isCollection && searchCase ? <Typography id="case-information-case-search-result" sx={{mb:2}}>{searchCase}</Typography> : ''}
             </FormGroup>
             <Button id="case-information-save-btn" sx={{mb: 2}} onClick={props.onSave} variant="contained">{t('button.save')}</Button>
         </div>
